@@ -1,21 +1,20 @@
 ######## PACKAGES #########
 
-library(dplyr)       # for data manipulation
-library(ggplot2)     # for creating plots
-library(ggpubr)      # for advanced ggplot functionalities
-library(lubridate)   # for handling date data if needed
-library(scales)      # for frequency tables
-library(ggpirate)    # for pirate plots
+library(dplyr)       
+library(ggplot2)     
+library(ggpubr)      
+library(lubridate)   
+library(scales)      
+library(ggpirate)    
 library(lmtest)
-library(lme4)        # for linear mixed models
-library(lmerTest)    # for p-values in mixed models
-library(emmeans)     # for estimated marginal means
-library(multcomp)    # for post-hoc comparisons
-library(gridExtra)   # for arranging plots
-library(grid)        # for graphical layout in plot
-library(png)         # for load png image
-library(patchwork)   # for graphical layout in plot
-
+library(lme4)        
+library(lmerTest)    
+library(emmeans)     
+library(multcomp)    
+library(gridExtra)   
+library(grid)        
+library(png)         
+library(patchwork)   
 
 ###############################
 
@@ -57,6 +56,7 @@ table(brown_patches_df$Treatment, brown_patches_df$Brown_patches)
 # Test for differences in fertilisation between DN and NN treatments
 prop.test(x = c(yes_DN, yes_NN), 
           n = c(length(brown_patches_DN), length(brown_patches_NN)))
+
 ############## Result ######################
 #2-sample test for equality of proportions with continuity correction
 #data:  c(yes_DN, yes_NN) out of c(length(brown_patches_DN), length(brown_patches_NN))
@@ -117,6 +117,7 @@ tomato_df <- tomato_df[tomato_df$Marketing_value_score != "-", ] # Excludes unvi
 ############################################
 #### MARKETING VALUE OF FRUIT ANALYSIS #####
 ############################################
+
 # Convert Marketing_value_score to numeric for analysis
 tomato_df$Marketing_value_score <- as.numeric(tomato_df$Marketing_value_score)
 
@@ -189,6 +190,7 @@ Figure_5 <- ggplot(tomato_df,
 ############################################
 ########### SEED NUMBER ANALYSIS ###########
 ############################################
+
 # Filtering the rows where the seed count is 0 because "non developed fruit"
 tomato_df <- tomato_df[tomato_df$Fruit_marketing_value != "non developed fruit", ]
 
@@ -276,7 +278,6 @@ Figure_6 <- ggplot(tomato_df, aes(x=factor(Treatment),
 # ggsave("Figure_6_ver2.pdf", Figure_6, width = 10, height = 8)
 # ggsave(Figure_6, file = "Figure_6_ver2.png", width = 10, height = 8)
 ############################################
-
 
 # Try to use factors as random effects in the model
 # tomato_df$Total_flowers_on_cluster <- as.numeric(tomato_df$Total_flowers_on_cluster)
